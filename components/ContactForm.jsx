@@ -3,21 +3,32 @@
 import React, { useState } from 'react'
 
 const ContactForm = () => {
-  const [fullName, setFullName] = useState('')
-  const [email, setEmail] = useState('')
-  const [message, setMessage] = useState('')
+  const [error, setError] = useState([])
 
- const handleSubmit=(e)=>{
-  e.preventDefault()
-  console.log('nazwisko',fullName);
-  console.log('email',email);
-  console.log('wiadomość',message);
- }
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const fullName = e.target[0].value
+    const email = e.target[1].value
+    const message = e.target[2].value
+
+    try {
+      await fetch('/api/contact', {
+        method: 'POST',
+        body: JSON.stringify({
+          fullName,
+          email,
+          message,
+        }),
+      })
+      e.target.reset()
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   return (
     <>
       <form
-        action=''
         className='py-4 mt-4 border-t flex flex-col gap-5'
         onSubmit={handleSubmit}
       >
@@ -25,8 +36,6 @@ const ContactForm = () => {
           <label htmlFor='name'>Imie i Nazwisko</label>
           <input
             type='text'
-            onChange={(e)=>setFullName(e.target.value)}
-            value={fullName}
             placeholder='Jan Nowak'
             id='name'
           />
@@ -35,8 +44,6 @@ const ContactForm = () => {
           <label htmlFor='email'>Email</label>
           <input
             type='email'
-            onChange={(e)=>setEmail(e.target.value)}
-            value={email}
             placeholder='jan@wp.pl'
             id='email'
           />
@@ -46,8 +53,6 @@ const ContactForm = () => {
           <textarea
             name=''
             id='message'
-            onChange={(e)=>setMessage(e.target.value)}
-            value={message}
             className='h-32'
             placeholder='Tutaj wpisz swoją wiadomość...'
           ></textarea>

@@ -10,6 +10,7 @@ const ContactForm = () => {
     const fullName = e.target[0].value
     const email = e.target[1].value
     const message = e.target[2].value
+   
 
     try {
       await fetch('/api/contact', {
@@ -20,6 +21,7 @@ const ContactForm = () => {
           message,
         }),
       })
+
       e.target.reset()
     } catch (err) {
       console.log(err)
@@ -38,6 +40,7 @@ const ContactForm = () => {
             type='text'
             placeholder='Jan Nowak'
             id='name'
+            required
           />
         </div>
         <div>
@@ -46,6 +49,7 @@ const ContactForm = () => {
             type='email'
             placeholder='jan@wp.pl'
             id='email'
+            required
           />
         </div>
         <div>
@@ -55,6 +59,7 @@ const ContactForm = () => {
             id='message'
             className='h-32'
             placeholder='Tutaj wpisz swoją wiadomość...'
+            required
           ></textarea>
         </div>
         <div>

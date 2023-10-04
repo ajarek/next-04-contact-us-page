@@ -5,20 +5,20 @@ import React, { useState } from 'react'
 const ContactForm = () => {
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
+  const [toast, setToast] = useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsLoading(true)
-    setError(null)//Usuwa poprzednie błędy, gdy rozpocznie się nowe żądanie
+    setToast(false)
+    setError(null) //Usuwa poprzednie błędy, gdy rozpocznie się nowe żądanie
 
     const fullName = e.target[0].value
     const email = e.target[1].value
     const message = e.target[2].value
-    
-
 
     try {
-     const res= await fetch('/api/contact', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
         body: JSON.stringify({
           fullName,
@@ -27,23 +27,37 @@ const ContactForm = () => {
         }),
       })
       if (!res.ok) {
-        throw new Error('Nie udało się przesłać danych. Proszę spróbuj ponownie.')
+        throw new Error(
+          'Nie udało się przesłać danych. Proszę spróbuj ponownie.'
+        )
       }
-      console.log(res);
+      console.log(res)
       e.target.reset()
-      
     } catch (err) {
       setError(err.message)
       console.log(err)
-    }finally {
-      setIsLoading(false) 
+    } finally {
+      setIsLoading(false)
+      setToast(true)
+      setTimeout(() => {
+        setToast(false);
+      }, 3000);
+     
     }
-    
   }
-
+  
   return (
     <>
-      {error && <div style={{ color: 'red' }}>{error}</div>}
+      {error && (<div className="alert alert-error">
+  <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+  <span>{error}</span>
+</div>)}
+      {toast && !error && (
+      <div className="alert alert-success">
+  <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+  <span>Wiadomość wysłano poprawnie!</span>
+</div>
+      )}
       <form
         className='py-4 mt-4 border-t flex flex-col gap-5'
         onSubmit={handleSubmit}
@@ -53,8 +67,9 @@ const ContactForm = () => {
           <input
             type='text'
             placeholder='Jan Nowak'
-            id='name'
             required
+            className='input input-bordered input-primary w-full '
+            autoFocus
           />
         </div>
         <div>
@@ -62,8 +77,9 @@ const ContactForm = () => {
           <input
             type='email'
             placeholder='jan@wp.pl'
-            id='email'
             required
+            className='input input-bordered input-primary w-full '
+
           />
         </div>
         <div>
@@ -71,18 +87,21 @@ const ContactForm = () => {
           <textarea
             name=''
             id='message'
-            className='h-32'
+            className='h-32 textarea textarea-primary textarea-bordered'
             placeholder='Tutaj wpisz swoją wiadomość...'
             required
           ></textarea>
         </div>
         <div>
-          <button className='bg-green-700 p-3 text-white font-bold' disabled={isLoading}>
-          {isLoading ? 'Ładowanie...' : 'Wyślij'}
+          <button
+            type='submit'
+            className={isLoading?'btn btn-disabled': 'btn btn-primary btn-block'}
+            // disabled={isLoading}
+          >
+            {isLoading ? 'Ładowanie...' : 'Wyślij'}
           </button>
         </div>
       </form>
-      
     </>
   )
 }

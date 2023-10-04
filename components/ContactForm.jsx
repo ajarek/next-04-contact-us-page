@@ -68,7 +68,7 @@ const ContactForm = () => {
             type='text'
             placeholder='Jan Nowak'
             required
-            className='input input-bordered input-primary w-full '
+            className='input input-bordered input-primary w-full text-black '
             autoFocus
           />
         </div>
@@ -78,7 +78,7 @@ const ContactForm = () => {
             type='email'
             placeholder='jan@wp.pl'
             required
-            className='input input-bordered input-primary w-full '
+            className='input input-bordered input-primary w-full text-black '
 
           />
         </div>
@@ -87,7 +87,7 @@ const ContactForm = () => {
           <textarea
             name=''
             id='message'
-            className='h-32 textarea textarea-primary textarea-bordered'
+            className='h-32 textarea textarea-primary textarea-bordered text-black'
             placeholder='Tutaj wpisz swoją wiadomość...'
             required
           ></textarea>
@@ -95,8 +95,8 @@ const ContactForm = () => {
         <div>
           <button
             type='submit'
-            className={isLoading?'btn btn-disabled': 'btn btn-primary btn-block'}
-            // disabled={isLoading}
+            className= 'btn btn-primary btn-block'
+             disabled={isLoading}
           >
             {isLoading ? 'Ładowanie...' : 'Wyślij'}
           </button>

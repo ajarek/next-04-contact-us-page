@@ -17,3 +17,20 @@ export const POST = async (request) => {
     return new NextResponse('Błąd bazy danych', { status: 500 })
   }
 }
+
+export const GET = async () => {
+  
+  try{
+
+   await connect()
+
+   const contacts = await Message.find();
+   
+   return new NextResponse(JSON.stringify(contacts), { status: 200 });
+
+  }catch(err){
+    return new NextResponse('Database Error', { status: 500 });
+
+  }
+
+}

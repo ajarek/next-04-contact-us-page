@@ -1,5 +1,5 @@
 import ContactForm from '@/components/ContactForm'
-import DarkModeToggle from '@/components/DarkModeToggle'
+
 
 export default function Home() {
   return (
@@ -9,7 +9,7 @@ export default function Home() {
           <h1 className='text-3xl font-bold'>Skontaktuj się z nami</h1>
           <p>Proszę wypełnić poniższy formularz</p>
         </div>
-        <DarkModeToggle />
+        
       </div>
 
       <ContactForm />

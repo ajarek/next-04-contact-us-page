@@ -11,12 +11,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="pl">
+    <html lang='pl'>
       <body className={inter.className}>
-      <ThemeProvider>
-        {children}
-        </ThemeProvider>
-        </body>
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   )
 }

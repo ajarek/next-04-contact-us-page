@@ -55,7 +55,7 @@ const ContactForm = () => {
       {toast && !error && (
       <div className="alert alert-success">
   <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-  <span>Wiadomość wysłano poprawnie!</span>
+  <span> Wiadomość wysłano poprawnie!</span>
 </div>
       )}
       <form
@@ -85,7 +85,6 @@ const ContactForm = () => {
         <div>
           <label htmlFor='message'>Twoja Wiadomość</label>
           <textarea
-            name=''
             id='message'
             className='h-32 textarea textarea-primary textarea-bordered text-black'
             placeholder='Tutaj wpisz swoją wiadomość...'

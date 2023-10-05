@@ -2,9 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-form > div {
+form>div {
   @apply flex flex-col gap-2;
 }
+
 .light {
   background-color: #ffffff;
   color: #111;
@@ -14,6 +15,7 @@ form > div {
   background-color: #111;
   color: #ffffff;
 }
-.theme{
+
+.theme {
   transition: 1s all ease;
 }

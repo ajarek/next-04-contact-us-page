@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose'
 
-const { Schema } = mongoose;
+const { Schema } = mongoose
 
 const messageSchema = new Schema(
   {
@@ -16,10 +16,10 @@ const messageSchema = new Schema(
       type: String,
       required: true,
     },
-   
   },
   { timestamps: true }
-);
+)
 
 //Jeśli kolekcja Message nie istnieje, utwórz nową.
-export default mongoose.models.Messages || mongoose.model("Messages", messageSchema);
+export default mongoose.models.Messages ||
+  mongoose.model('Messages', messageSchema)

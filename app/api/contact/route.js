@@ -1,18 +1,20 @@
 import { NextResponse } from "next/server";
+import connect from "@/utils/db";
+import Message from "@/models/Message";
 
 export const POST = async (request) => {
   const body = await request.json();
-
-  // const newPost = new Post(body);
-
+  
+   const newMessage = new Message(body);
+  console.log(newMessage);
   try {
-    // await connect();
+    await connect();
 
-    // await newPost.save();
-   console.log(body);
+    await newMessage.save();
+  
 
-    return new NextResponse("Post has been created", { status: 201 });
+    return new NextResponse("Wiadomość została utworzona", { status: 201 });
   } catch (err) {
-    return new NextResponse("Database Error", { status: 500 });
+    return new NextResponse("Błąd bazy danych", { status: 500 });
   }
 };

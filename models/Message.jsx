@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 
 const messageSchema = new Schema(
   {
-    name: {
+    fullName: {
       type: String,
       required: true,
     },
@@ -22,4 +22,4 @@ const messageSchema = new Schema(
 );
 
 //Jeśli kolekcja Message nie istnieje, utwórz nową.
-export default mongoose.models.Message || mongoose.model("Message", messageSchema);
+export default mongoose.models.Messages || mongoose.model("Messages", messageSchema);

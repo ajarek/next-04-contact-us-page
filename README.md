@@ -13,7 +13,7 @@ pnpm dev
 # or
 bun dev
 ```
-added .env :MONGODB_URI=mongodb+srv://"name":"key"@cluster0.rutv1wh.mongodb.net/contact_db
+added .env :MONGODB_URI=mongodb+srv://[name]:[key]@cluster0.rutv1wh.mongodb.net/contact_db
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 

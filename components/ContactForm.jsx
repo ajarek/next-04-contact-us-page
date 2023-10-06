@@ -40,23 +40,48 @@ const ContactForm = () => {
       setIsLoading(false)
       setToast(true)
       setTimeout(() => {
-        setToast(false);
-      }, 3000);
-     
+        setToast(false)
+      }, 3000)
     }
   }
-  
+
   return (
     <>
-      {error && (<div className="alert alert-error">
-  <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-  <span>{error}</span>
-</div>)}
+      {error && (
+        <div className='alert alert-error'>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            className='stroke-current shrink-0 h-6 w-6'
+            fill='none'
+            viewBox='0 0 24 24'
+          >
+            <path
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              strokeWidth='2'
+              d='M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z'
+            />
+          </svg>
+          <span>{error}</span>
+        </div>
+      )}
       {toast && !error && (
-      <div className="alert alert-success">
-  <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-  <span> Wiadomość wysłano poprawnie!</span>
-</div>
+        <div className='alert alert-success'>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            className='stroke-current shrink-0 h-6 w-6'
+            fill='none'
+            viewBox='0 0 24 24'
+          >
+            <path
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              strokeWidth='2'
+              d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'
+            />
+          </svg>
+          <span> Wiadomość wysłano poprawnie!</span>
+        </div>
       )}
       <form
         className='py-4 mt-4 border-t flex flex-col gap-5'
@@ -79,7 +104,6 @@ const ContactForm = () => {
             placeholder='jan@wp.pl'
             required
             className='input input-bordered input-primary w-full text-black '
-
           />
         </div>
         <div>
@@ -94,8 +118,8 @@ const ContactForm = () => {
         <div>
           <button
             type='submit'
-            className= 'btn btn-primary btn-block'
-             disabled={isLoading}
+            className='btn btn-primary btn-block'
+            disabled={isLoading}
           >
             {isLoading ? 'Ładowanie...' : 'Wyślij'}
           </button>

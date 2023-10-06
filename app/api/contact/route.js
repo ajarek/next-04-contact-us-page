@@ -19,18 +19,13 @@ export const POST = async (request) => {
 }
 
 export const GET = async () => {
-  
-  try{
+  try {
+    await connect()
 
-   await connect()
+    const contacts = await Message.find()
 
-   const contacts = await Message.find();
-   
-   return new NextResponse(JSON.stringify(contacts), { status: 200 });
-
-  }catch(err){
-    return new NextResponse('Database Error', { status: 500 });
-
+    return new NextResponse(JSON.stringify(contacts), { status: 200 })
+  } catch (err) {
+    return new NextResponse('Błąd bazy danych', { status: 500 })
   }
-
 }

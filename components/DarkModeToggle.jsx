@@ -3,10 +3,9 @@
 import { ThemeContext } from '@/context/ThemaContext'
 import React, { useContext } from 'react'
 
-
 const DarkModeToggle = () => {
   const { setMode, mode } = useContext(ThemeContext)
-  
+
   const toggle = () => {
     setMode((prev) => (prev === 'dark' ? 'light' : 'dark'))
   }
